@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(?:-[A-Z]{2})?$"
+    },
+    "voice": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "const": "elevenlabs"
+        },
+        "voiceId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "modelId": {
+          "default": "eleven_v4",
+          "type": "string",
+          "minLength": 1
+        },
+        "stability": {
+          "default": 0.5,
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "similarityBoost": {
+          "default": 0.75,
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "speed": {
+          "default": 1,
+          "type": "number",
+          "minimum": 0.7,
+          "maximum": 1.2
+        },
+        "name": {
+          "type": "string"
+        },
+        "referenceUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "provider",
+        "voiceId",
+        "modelId",
+        "stability",
+        "similarityBoost",
+        "speed"
+      ],
+      "additionalProperties": false
+    },
+    "video": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": [
+            "vertical",
+            "horizontal",
+            "both"
+          ]
+        },
+        "fps": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 120
+        },
+        "shortSide": {
+          "default": 1080,
+          "type": "integer",
+          "minimum": 360,
+          "maximum": 2160,
+          "multipleOf": 2
+        }
+      },
+      "required": [
+        "format",
+        "fps",
+        "shortSide"
+      ],
+      "additionalProperties": false
+    },
+    "editing": {
+      "type": "object",
+      "properties": {
+        "style": {
+          "type": "string",
+          "enum": [
+            "webdoc",
+            "minimal",
+            "dynamic"
+          ]
+        },
+        "notes": {
+          "default": "",
+          "type": "string"
+        },
+        "background": {
+          "default": "#111827",
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "foreground": {
+          "default": "#f9fafb",
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "accent": {
+          "default": "#fbbf24",
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        },
+        "fontFamily": {
+          "default": "Arial",
+          "type": "string"
+        },
+        "imageMotion": {
+          "default": "slow-zoom",
+          "type": "string",
+          "enum": [
+            "none",
+            "slow-zoom",
+            "pan"
+          ]
+        },
+        "transition": {
+          "default": "fade",
+          "type": "string",
+          "enum": [
+            "cut",
+            "fade"
+          ]
+        },
+        "fadeSeconds": {
+          "default": 0.25,
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "narrationTailSeconds": {
+          "default": 0.4,
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "subtitles": {
+          "default": true,
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "style",
+        "notes",
+        "background",
+        "foreground",
+        "accent",
+        "fontFamily",
+        "imageMotion",
+        "transition",
+        "fadeSeconds",
+        "narrationTailSeconds",
+        "subtitles"
+      ],
+      "additionalProperties": false
+    },
+    "media": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "enum": [
+            "pexels",
+            "pixabay"
+          ]
+        },
+        "bRoll": {
+          "type": "boolean"
+        },
+        "stockImages": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "provider",
+        "bRoll",
+        "stockImages"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "name",
+    "language",
+    "voice",
+    "video",
+    "editing",
+    "media"
+  ],
+  "additionalProperties": false
+}

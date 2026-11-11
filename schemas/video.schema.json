@@ -1,0 +1,381 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "number",
+      "const": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenes": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "title": {
+            "default": "",
+            "type": "string"
+          },
+          "narration": {
+            "default": "",
+            "type": "string",
+            "maxLength": 4500
+          },
+          "durationSeconds": {
+            "type": "number",
+            "exclusiveMinimum": 0,
+            "maximum": 3600
+          },
+          "asset": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "provider": {
+                    "type": "string",
+                    "enum": [
+                      "pexels",
+                      "pixabay"
+                    ]
+                  },
+                  "id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "downloadUrl": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "sourceUrl": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "creator": {
+                    "type": "string"
+                  },
+                  "creatorUrl": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "licenseUrl": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "width": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "duration": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  }
+                },
+                "required": [
+                  "provider",
+                  "id",
+                  "kind",
+                  "downloadUrl",
+                  "sourceUrl",
+                  "creator",
+                  "creatorUrl",
+                  "licenseUrl",
+                  "width",
+                  "height"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "provider": {
+                    "type": "string",
+                    "const": "local"
+                  },
+                  "path": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "image",
+                      "video"
+                    ]
+                  },
+                  "creator": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "sourceUrl": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "license": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "width": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "height": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "duration": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  }
+                },
+                "required": [
+                  "provider",
+                  "path",
+                  "kind",
+                  "creator",
+                  "sourceUrl",
+                  "license",
+                  "width",
+                  "height"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          },
+          "shots": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "startAt": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "asset": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "properties": {
+                        "provider": {
+                          "type": "string",
+                          "enum": [
+                            "pexels",
+                            "pixabay"
+                          ]
+                        },
+                        "id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "downloadUrl": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "sourceUrl": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "creator": {
+                          "type": "string"
+                        },
+                        "creatorUrl": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "licenseUrl": {
+                          "type": "string",
+                          "format": "uri"
+                        },
+                        "width": {
+                          "type": "number",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "number",
+                          "exclusiveMinimum": 0
+                        },
+                        "duration": {
+                          "type": "number",
+                          "exclusiveMinimum": 0
+                        }
+                      },
+                      "required": [
+                        "provider",
+                        "id",
+                        "kind",
+                        "downloadUrl",
+                        "sourceUrl",
+                        "creator",
+                        "creatorUrl",
+                        "licenseUrl",
+                        "width",
+                        "height"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "provider": {
+                          "type": "string",
+                          "const": "local"
+                        },
+                        "path": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "image",
+                            "video"
+                          ]
+                        },
+                        "creator": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "sourceUrl": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "license": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "width": {
+                          "type": "number",
+                          "exclusiveMinimum": 0
+                        },
+                        "height": {
+                          "type": "number",
+                          "exclusiveMinimum": 0
+                        },
+                        "duration": {
+                          "type": "number",
+                          "exclusiveMinimum": 0
+                        }
+                      },
+                      "required": [
+                        "provider",
+                        "path",
+                        "kind",
+                        "creator",
+                        "sourceUrl",
+                        "license",
+                        "width",
+                        "height"
+                      ],
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "title": {
+                  "default": "",
+                  "type": "string"
+                },
+                "label": {
+                  "default": "",
+                  "type": "string"
+                },
+                "fit": {
+                  "default": "cover",
+                  "type": "string",
+                  "enum": [
+                    "cover",
+                    "contain"
+                  ]
+                },
+                "focusX": {
+                  "default": 50,
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "focusY": {
+                  "default": 50,
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "startFromSeconds": {
+                  "default": 0,
+                  "type": "number",
+                  "minimum": 0
+                },
+                "motion": {
+                  "default": "slow-zoom",
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "slow-zoom",
+                    "pan"
+                  ]
+                },
+                "effect": {
+                  "default": "none",
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "scan"
+                  ]
+                }
+              },
+              "required": [
+                "startAt",
+                "asset",
+                "title",
+                "label",
+                "fit",
+                "focusX",
+                "focusY",
+                "startFromSeconds",
+                "motion",
+                "effect"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "narration"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "title",
+    "scenes"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Edição de vídeo"
+  short_description: "Montagem em Remotion, HyperFrames e Three.js guiada pelo canal"
+  default_prompt: "Use $edicao-video para montar este vídeo seguindo channel/edicao.prompt.md e as demais definições do canal."

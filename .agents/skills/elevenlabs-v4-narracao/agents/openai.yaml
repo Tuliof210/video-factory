@@ -1,0 +1,4 @@
+interface:
+  display_name: "Narração ElevenLabs v4"
+  short_description: "Roteiros em locução expressiva para ElevenLabs v4"
+  default_prompt: "Use $elevenlabs-v4-narracao para adaptar este roteiro à voz do canal, com direção emocional natural, e salvar a narração pronta para ElevenLabs v4."
