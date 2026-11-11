@@ -4,8 +4,13 @@ import { slug } from "../config";
 import { ROOT, writeJson } from "./io";
 import type { Publication } from "./delivery";
 
-export async function initVideo(videoId: string, title: string, root = ROOT) {
-  slug.parse(videoId);
+export async function initVideo(
+  name: string,
+  title: string,
+  root = ROOT,
+  now = Date.now(),
+) {
+  slug.parse(name);
   if (!title.trim()) throw new Error("Video title cannot be empty.");
   const channelDir = path.join(root, "channel");
   await access(channelDir).catch(() => {
@@ -15,6 +20,8 @@ export async function initVideo(videoId: string, title: string, root = ROOT) {
   });
   const videosDir = path.join(channelDir, "videos");
   await mkdir(videosDir, { recursive: true });
+  // Prefix with creation time so folders sort chronologically.
+  const videoId = `${Math.floor(now / 1000)}-${name}`;
   const jobDir = path.join(videosDir, videoId);
   await mkdir(jobDir);
   for (const folder of [

@@ -26,7 +26,7 @@ Ações pagas (ElevenLabs, geração de imagem/música em nuvem, HeyGen) só com
 
 ## Episódios e entregas
 
-Episódios ficam em `channel/videos/<video>/` (`npm run video -- video-init <video> --title "..."`):
+Episódios ficam em `channel/videos/<video>/` (`npm run video -- video-init <nome> --title "..."`). A pasta se chama `<unixtimestamp>-<nome>`, com o instante da criação, para ordenar por data; os demais comandos aceitam o nome completo ou só `<nome>`:
 
 - `video.json` na raiz: contrato da composição genérica.
 - `editorial/`: briefing, roteiro, notas, pesquisa, títulos.

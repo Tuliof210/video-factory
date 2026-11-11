@@ -3,7 +3,7 @@ import { Command, InvalidArgumentError } from "commander";
 import path from "node:path";
 import { readFile, mkdir, access, copyFile } from "node:fs/promises";
 import { z } from "zod";
-import { ROOT, writeJson } from "./core/io";
+import { ROOT, jobPaths, writeJson } from "./core/io";
 import { stockProviderSchema } from "./config";
 import {
   loadJob,
@@ -84,7 +84,9 @@ program
   )
   .action(async (video) => {
     const delivery = await packagePublication(video);
-    console.log(`Package: channel/videos/${video}/renders/final/`);
+    console.log(
+      `Package: ${path.relative(ROOT, jobPaths(video).jobDir)}/renders/final/`,
+    );
     for (const item of delivery.pending) console.log(`- ${item}`);
   });
 program

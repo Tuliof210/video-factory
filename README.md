@@ -49,7 +49,7 @@ Catálogo completo: [.agents/skills/README.md](.agents/skills/README.md).
 ## Produzir um vídeo
 
 ```sh
-npm run video -- video-init meu-video --title "Título de trabalho"
+npm run video -- video-init meu-video --title "Título de trabalho"  # cria channel/videos/<unixtimestamp>-meu-video/
 npm run video -- validate meu-video     # sem custo
 npm run video -- prepare meu-video      # gera narração (ElevenLabs, pago) e baixa mídia
 npm run video -- render meu-video

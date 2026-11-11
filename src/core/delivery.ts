@@ -15,7 +15,7 @@ import {
 import path from "node:path";
 import { z } from "zod";
 import { slug } from "../config";
-import { ROOT } from "./io";
+import { ROOT, jobPaths } from "./io";
 
 const relativeFile = z
   .string()
@@ -175,7 +175,7 @@ export async function packagePublication(
   root = ROOT,
 ): Promise<DeliveryManifest> {
   slug.parse(videoId);
-  const jobDir = await realpath(path.join(root, "channel", "videos", videoId));
+  const jobDir = await realpath(jobPaths(videoId, root).jobDir);
   const publication = publicationSchema.parse(
     JSON.parse(await readFile(path.join(jobDir, "publicacao.json"), "utf8")),
   );

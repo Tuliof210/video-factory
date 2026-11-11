@@ -43,7 +43,7 @@ channel/
 
 ## Arquivos de um vídeo
 
-`npm run video -- video-init <video> --title "Título de trabalho"` cria a estrutura, um briefing pendente e a seleção inicial de publicação. O comando não inventa roteiro ou cenas.
+`npm run video -- video-init <nome> --title "Título de trabalho"` cria `channel/videos/<unixtimestamp>-<nome>/` (o prefixo é o instante da criação, em segundos, e mantém as pastas em ordem cronológica), com a estrutura, um briefing pendente e a seleção inicial de publicação. O comando não inventa roteiro ou cenas. `validate`, `prepare`, `render` e `package` aceitam o nome completo da pasta ou só `<nome>`; se houver dois episódios com o mesmo nome, usar o nome completo.
 
 | Caminho no episódio | Conteúdo |
 | --- | --- |
