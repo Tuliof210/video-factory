@@ -257,3 +257,25 @@ describe("Pixabay download boundaries", () => {
     expect(fetcher).toHaveBeenCalledTimes(1);
   });
 });
+
+describe("already selected Pexels assets", () => {
+  it("download without PEXELS_API_KEY", async () => {
+    vi.stubEnv("PEXELS_API_KEY", "");
+    vi.stubGlobal(
+      "fetch",
+      vi
+        .fn()
+        .mockResolvedValue(
+          new Response("mp4", { headers: { "content-type": "video/mp4" } }),
+        ),
+    );
+    const out = path.join(cacheDir, "pexels.mp4");
+    await downloadStock(
+      "https://videos.pexels.com/1.mp4",
+      out,
+      "video",
+      "pexels",
+    );
+    expect(await readFile(out, "utf8")).toBe("mp4");
+  });
+});

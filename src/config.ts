@@ -6,7 +6,7 @@ export const slug = z
     /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
     "Use lowercase letters, numbers and hyphens",
   );
-export const stockProviderSchema = z.enum(["pexels", "pixabay"]);
+export const stockProviderSchema = z.enum(["pixabay", "pexels"]);
 export type StockProvider = z.infer<typeof stockProviderSchema>;
 export const channelSchema = z
   .object({
@@ -65,7 +65,7 @@ export const channelSchema = z
       .strict(),
     media: z
       .object({
-        provider: stockProviderSchema,
+        provider: stockProviderSchema.default("pixabay"),
         bRoll: z.boolean(),
         stockImages: z.boolean(),
       })

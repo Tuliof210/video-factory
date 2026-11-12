@@ -24,7 +24,7 @@ import {
 const program = new Command()
   .name("video-factory")
   .description(
-    "Video production driven by channel/*.prompt.md, with Remotion, ElevenLabs, Pixabay and Pexels",
+    "Video production driven by channel/*.prompt.md, with Remotion, ElevenLabs and Pixabay",
   );
 program
   .command("doctor")
@@ -37,7 +37,7 @@ program
       "PEXELS_API_KEY",
     ])
       console.log(
-        `${key}: ${process.env[key]?.trim() ? "configured" : "not configured"}`,
+        `${key}: ${process.env[key]?.trim() ? "configured" : key === "PEXELS_API_KEY" ? "not configured (optional)" : "not configured"}`,
       );
     const report = await checkChannel();
     console.log(
@@ -104,7 +104,7 @@ program
   .command("stock-search")
   .option(
     "--provider <provider>",
-    "pixabay or pexels; defaults to the channel's media.provider",
+    "pixabay (default) or pexels (optional, needs PEXELS_API_KEY); defaults to the channel's media.provider",
   )
   .requiredOption("--kind <kind>", "image or video")
   .requiredOption("--query <query>")
@@ -122,7 +122,7 @@ program
     const limit = z.coerce.number().int().min(1).max(80).parse(options.limit);
     const channel = await loadChannel().catch(() => undefined);
     const provider = stockProviderSchema.parse(
-      options.provider ?? channel?.media.provider ?? "pexels",
+      options.provider ?? channel?.media.provider ?? "pixabay",
     );
     if (
       channel &&

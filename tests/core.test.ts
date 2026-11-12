@@ -219,8 +219,20 @@ describe("production constraints", () => {
       "https://localhost/a",
       "https://user@images.pexels.com/a",
     ])
-      expect(() => assertStockUrl(url)).toThrow();
-    expect(() => assertStockUrl("https://images.pexels.com/a")).not.toThrow();
+      expect(() => assertStockUrl(url, "pexels")).toThrow();
+    expect(() =>
+      assertStockUrl("https://images.pexels.com/a", "pexels"),
+    ).not.toThrow();
+    expect(() => assertStockUrl("https://images.pexels.com/a")).toThrow();
+  });
+  it("defaults the stock provider to Pixabay", () => {
+    const { media, ...rest } = channel;
+    expect(
+      channelSchema.parse({
+        ...rest,
+        media: { bRoll: true, stockImages: true },
+      }).media.provider,
+    ).toBe("pixabay");
   });
 });
 describe("captions", () => {

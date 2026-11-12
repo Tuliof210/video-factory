@@ -187,10 +187,11 @@
       "type": "object",
       "properties": {
         "provider": {
+          "default": "pixabay",
           "type": "string",
           "enum": [
-            "pexels",
-            "pixabay"
+            "pixabay",
+            "pexels"
           ]
         },
         "bRoll": {

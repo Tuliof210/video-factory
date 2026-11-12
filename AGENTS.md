@@ -24,6 +24,18 @@ O [catálogo](.agents/skills/README.md) lista as skills. Usar a que cobre a tare
 
 Ações pagas (ElevenLabs, geração de imagem/música em nuvem, HeyGen) só com escopo autorizado pelo usuário. Preparar arquivos não publica nada em serviços externos.
 
+## Autonomia na produção
+
+Quando o usuário pede para criar um vídeo, a entrega é o vídeo pronto. Não parar a cada etapa para pedir aprovação nem oferecer "A ou B".
+
+- Fazer as perguntas, inclusive o escopo das ações pagas, uma única vez no início, todas juntas. Depois disso, ir até o render final sem interromper.
+- Diante de uma escolha, decidir pelo prompt do canal e pelo bom senso, registrar a decisão em `producao/` e seguir. Parar só quando faltar algo que bloqueia de fato: chave, login, ou gasto acima do escopo autorizado.
+- O usuário revisa o resultado no fim. Muitas pausas no meio poluem o contexto e pioram o vídeo; na produção do episódio "air fryer" (11/2026) foi isso que aconteceu.
+- Qualidade mínima antes de entregar, conferida pelo agente e não pelo usuário:
+  - gancho editado de verdade, com ritmo, cortes, movimento e trilha, e não um plano estático ou só um render 3D;
+  - edição em todo o vídeo além do 3D: cortes, movimento de câmera em fotos, transições e variedade de material;
+  - áudio montado e conferido em sincronia com a imagem: voz, trilha e efeitos no lugar certo, ouvindo trechos e não só medindo loudness.
+
 ## Episódios e entregas
 
 Episódios ficam em `channel/videos/<video>/` (`npm run video -- video-init <nome> --title "..."`). A pasta se chama `<unixtimestamp>-<nome>`, com o instante da criação, para ordenar por data; os demais comandos aceitam o nome completo ou só `<nome>`:
@@ -42,7 +54,7 @@ Composições Remotion próprias do canal ficam em `channel/remotion/episodes/<v
 ## Ferramentas
 
 - **Remotion** (`npm run studio`, `npm run video -- render`), **HyperFrames** (`npm run hyperframes -- <comando>`, requer FFmpeg/FFprobe completos) e **Three.js** (`three`, sincronizado ao frame; em HyperFrames, `hf-seek`). Respeitar FPS, resolução e identidade do canal mesmo quando exemplos das ferramentas usam outros padrões. Guia: [docs/video-tools.md](docs/video-tools.md).
-- **Antigravity CLI** (`agy`) para gerar imagens via subagente. **ElevenLabs**, **Pixabay** e **Pexels** pelas chaves em `.env`.
+- **Antigravity CLI** (`agy`) para gerar imagens via subagente. **ElevenLabs** e **Pixabay** (banco de b-roll padrão) pelas chaves em `.env`. Pexels é opcional e só é usado quando pedido explicitamente.
 
 <!-- ai-memory:start -->
 ## Long-term memory (ai-memory)

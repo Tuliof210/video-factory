@@ -1,6 +1,6 @@
 ---
 name: broll-busca
-description: Encontrar, avaliar e registrar b-rolls e imagens de banco ou de acervos públicos (Pixabay, Pexels, Wikimedia Commons, Internet Archive, acervos oficiais) com licença e crédito, para um trecho do roteiro. Usar quando a edição precisar de cobertura filmada ou fotográfica real.
+description: Encontrar, avaliar e registrar b-rolls e imagens de banco ou de acervos públicos (Pixabay, Pexels opcional, Wikimedia Commons, Internet Archive, acervos oficiais) com licença e crédito, para um trecho do roteiro. Usar quando a edição precisar de cobertura filmada ou fotográfica real.
 ---
 
 # Busca de b-roll
@@ -11,15 +11,15 @@ Ler a seção "Mistura de materiais" de `channel/edicao.prompt.md` para saber qu
 
 Para cada trecho, escrever o que o plano precisa mostrar: gesto, objeto, lugar, época, detalhe. Buscar pelo conteúdo visual, não pela palavra-chave do assunto. "Mão passando produto no leitor" acha mais do que "código de barras".
 
-## Bancos com API (Pixabay, Pexels)
+## Bancos com API (Pixabay; Pexels opcional)
 
-Chaves `PIXABAY_API_KEY` / `PEXELS_API_KEY` em `.env`.
+Pixabay é o banco padrão (`PIXABAY_API_KEY` em `.env`). Pexels é opcional: só com `--provider pexels` e `PEXELS_API_KEY` preenchida; sem a chave, não é usado.
 
 ```bash
 npm run video -- stock-search --kind video --query "hand scanning product checkout" --orientation landscape --limit 15 --out channel/videos/<video>/build/candidatos/scan-01.json
 ```
 
-- `--kind image|video`, `--orientation landscape|portrait` (seguir o formato do canal), `--provider pixabay|pexels` para trocar o banco.
+- `--kind image|video`, `--orientation landscape|portrait` (seguir o formato do canal), `--provider pexels` só para usar o banco opcional; o padrão é Pixabay (ou o `media.provider` do canal).
 - Buscar em inglês costuma render mais resultados.
 - O JSON traz URL, autor, licença, dimensões e duração. Um item escolhido entra no `video.json` como `asset` (ou `shots[].asset`) do jeito que veio; `prepare` baixa, faz cache e escreve os créditos.
 

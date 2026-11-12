@@ -1,12 +1,12 @@
 # video-factory
 
-Produção de vídeos com agentes de IA, genérica para qualquer canal. O projeto traz skills, CLI e composições base (Remotion, HyperFrames, Three.js, ElevenLabs, Pixabay, Pexels). Tudo o que é específico do canal (nicho, idioma, voz, persona, formato, estilo de roteiro, visual, edição, trilha, CTA, produtos) você define em `channel/`, a partir do molde `channel-template/`.
+Produção de vídeos com agentes de IA, genérica para qualquer canal. O projeto traz skills, CLI e composições base (Remotion, HyperFrames, Three.js, ElevenLabs, Pixabay). Tudo o que é específico do canal (nicho, idioma, voz, persona, formato, estilo de roteiro, visual, edição, trilha, CTA, produtos) você define em `channel/`, a partir do molde `channel-template/`.
 
 ## Começar
 
 ```sh
 npm ci
-cp .env.example .env              # chaves ElevenLabs / Pixabay / Pexels
+cp .env.example .env              # chaves ElevenLabs / Pixabay
 npm run video -- channel-init     # cria channel/ a partir de channel-template/
 ```
 

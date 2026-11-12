@@ -58,7 +58,7 @@ npm run video -- stock-search --kind image --query "coffee beans" --orientation 
 npm run video -- stock-search --kind video --query "supermarket" --orientation landscape --out work/clips.json
 ```
 
-Com `channel/` configurado, a busca usa `media.provider` e respeita `media.bRoll`/`media.stockImages`. `--provider pixabay` ou `--provider pexels` escolhe explicitamente o banco. Sem canal nem provedor, usa Pexels. A skill [broll-busca](../.agents/skills/broll-busca/SKILL.md) cobre também acervos públicos.
+Com `channel/` configurado, a busca usa `media.provider` e respeita `media.bRoll`/`media.stockImages`. `--provider pixabay` ou `--provider pexels` escolhe explicitamente o banco. Sem canal nem provedor, usa Pixabay. Pexels é opcional: só entra com `--provider pexels` ou `media.provider: pexels` e exige `PEXELS_API_KEY`; assets Pexels já registrados no `video.json` baixam e recebem crédito sem a chave. A skill [broll-busca](../.agents/skills/broll-busca/SKILL.md) cobre também acervos públicos.
 
 A busca salva metadados e não baixa os arquivos. Não escolhe automaticamente uma imagem por palavras-chave. Confira relevância, enquadramento, permissões e precisão histórica. O enquadramento padrão é `cover`; planos podem usar `contain` e ajustar o foco. Revise possíveis cortes em rostos e objetos nos formatos de saída.
 

@@ -7,7 +7,7 @@ import { randomUUID } from "node:crypto";
 import type { StockProvider } from "../config";
 export function assertStockUrl(
   value: string,
-  provider: StockProvider = "pexels",
+  provider: StockProvider = "pixabay",
 ) {
   const url = new URL(value);
   const allowedHost =
@@ -29,7 +29,7 @@ export async function downloadStock(
   url: string,
   destination: string,
   kind: "image" | "video",
-  provider: StockProvider = "pexels",
+  provider: StockProvider = "pixabay",
 ) {
   assertStockUrl(url, provider);
   try {

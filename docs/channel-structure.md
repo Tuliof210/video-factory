@@ -22,7 +22,7 @@ A CLI junta o frontmatter de todos os `channel/*.prompt.md` e valida o resultado
 | `voice.provider`, `voice.voiceId`, `voice.modelId`, `voice.stability`, `voice.similarityBoost`, `voice.speed` | `narracao.prompt.md` | `elevenlabs`; ID ou `null`; `eleven_v4`; 0–1; 0–1; 0.7–1.2 |
 | `editing.background`, `editing.foreground`, `editing.accent`, `editing.fontFamily` | `identidade-visual.prompt.md` | hex `#RRGGBB`; nome de fonte |
 | `editing.style`, `editing.imageMotion`, `editing.transition`, `editing.subtitles` | `edicao.prompt.md` | `webdoc`/`minimal`/`dynamic`; `none`/`slow-zoom`/`pan`; `cut`/`fade`; booleano |
-| `media.provider`, `media.bRoll`, `media.stockImages` | `edicao.prompt.md` | `pixabay`/`pexels`; booleano; booleano |
+| `media.provider`, `media.bRoll`, `media.stockImages` | `edicao.prompt.md` | `pixabay` (padrão) ou `pexels` (opcional); booleano; booleano |
 
 `editing.fadeSeconds`, `editing.narrationTailSeconds` e `editing.notes` são opcionais e podem ser acrescentados em qualquer prompt. Uma chave pode morar em qualquer arquivo; o template só sugere o lugar. Se a mesma chave aparecer em dois arquivos, vale a do arquivo que vem depois em ordem alfabética.
 

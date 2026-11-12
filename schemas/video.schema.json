@@ -42,8 +42,8 @@
                   "provider": {
                     "type": "string",
                     "enum": [
-                      "pexels",
-                      "pixabay"
+                      "pixabay",
+                      "pexels"
                     ]
                   },
                   "id": {
@@ -178,8 +178,8 @@
                         "provider": {
                           "type": "string",
                           "enum": [
-                            "pexels",
-                            "pixabay"
+                            "pixabay",
+                            "pexels"
                           ]
                         },
                         "id": {
