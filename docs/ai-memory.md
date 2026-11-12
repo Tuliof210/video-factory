@@ -1,6 +1,6 @@
 # ai-memory neste projeto
 
-O projeto usa [ai-memory](https://github.com/akitaonrails/ai-memory) para continuidade entre sessões e entre agentes (Claude Code, Codex, etc.). A identidade fica em `.ai-memory.toml` (workspace `default`, projeto `video-builder`); o bloco gerenciado em `AGENTS.md` e as skills `.agents/skills/ai-memory-*` dizem aos agentes como usar.
+O projeto usa [ai-memory](https://github.com/akitaonrails/ai-memory) para continuidade entre sessões e entre agentes (Claude Code, Codex, etc.). A identidade fica em `.ai-memory.toml` (workspace `default`, projeto `video-factory`); o bloco gerenciado em `AGENTS.md` e as skills `.agents/skills/ai-memory-*` dizem aos agentes como usar.
 
 ## Instalar
 
